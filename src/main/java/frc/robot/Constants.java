@@ -19,7 +19,6 @@ public final class Constants {
         public static final double wheelDiameter = 4.0; // 0.102 meters
         public static final double circumference = Math.PI * wheelDiameter;
         public static final double conversionInches = circumference/2048;
-        //public static final double conversionVelocity; *Hasn't been finished yet
 
         public static final double turningPID_p = 0.0;
         public static final double turningPID_i = 0.0;
@@ -32,7 +31,7 @@ public final class Constants {
         public static final double turnEncoderMulitplier = (Math.PI * 2) / 360; // check and change if neccesary
      }
 
-    public static final class DrivetrainConstants {// sujay plz kill yourself
+    public static final class DrivetrainConstants {
         public static final int driveMotor_LF = 0;
         public static final int turnMotor_LF = 0;
 

@@ -2,7 +2,7 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-package frc.robot;
+package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
@@ -11,12 +11,12 @@ import com.ctre.phoenix.sensors.CANCoder;
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
-import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants;
 import frc.robot.Constants.DrivetrainConstants;
 import frc.robot.Constants.ModuleConstants;
 
-public class SwerveModule extends SubsystemBase {
+public class SwerveModuleSubsystem extends SubsystemBase {
   // Motor value initialization
   private WPI_TalonFX driveMotor; //add final to these later
   private WPI_TalonFX turningMotor;
@@ -28,7 +28,7 @@ public class SwerveModule extends SubsystemBase {
   private final PIDController turningPID = new PIDController(ModuleConstants.turningPID_p, ModuleConstants.turningPID_i, ModuleConstants.turningPID_d);
   private final PIDController drivePidController = new PIDController(ModuleConstants.drivePID_p, ModuleConstants.drivePID_i, ModuleConstants.drivePID_d);
 
-  public SwerveModule(int driveMotorID, int turningMotorID, int absoluteEncoderID, double absoluteEncoderOffset) {
+  public SwerveModuleSubsystem(int driveMotorID, int turningMotorID, int absoluteEncoderID, double absoluteEncoderOffset) {
 
     turnEncoder = new CANCoder(absoluteEncoderID);
     
