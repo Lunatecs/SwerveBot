@@ -13,16 +13,15 @@ import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
 import edu.wpi.first.math.kinematics.SwerveDriveOdometry;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.SwerveModule;
 import frc.robot.Constants.DrivetrainConstants;
 import frc.robot.Constants.ModuleConstants;
 
 public class DrivetrainSubsystem extends SubsystemBase {
   /** Creates a new DrivetrainSubsystem. */
-  SwerveModule leftFront = new SwerveModule(DrivetrainConstants.driveMotor_LF, DrivetrainConstants.turnMotor_LF, DrivetrainConstants.canCoderID_LF, DrivetrainConstants.encoderOffset_LF);
-  SwerveModule rightFront = new SwerveModule(DrivetrainConstants.driveMotor_LB, DrivetrainConstants.turnMotor_LB, DrivetrainConstants.canCoderID_LB, DrivetrainConstants.encoderOffset_LB);
-  SwerveModule leftBack = new SwerveModule(DrivetrainConstants.driveMotor_RF, DrivetrainConstants.turnMotor_RF, DrivetrainConstants.canCoderID_RF, DrivetrainConstants.encoderOffset_RF);
-  SwerveModule rightBack = new SwerveModule(DrivetrainConstants.driveMotor_RB, DrivetrainConstants.turnMotor_RB, DrivetrainConstants.canCoderID_RB, DrivetrainConstants.encoderOffset_RB);
+  SwerveModuleSubsystem leftFront = new SwerveModuleSubsystem(DrivetrainConstants.driveMotor_LF, DrivetrainConstants.turnMotor_LF, DrivetrainConstants.canCoderID_LF, DrivetrainConstants.encoderOffset_LF);
+  SwerveModuleSubsystem rightFront = new SwerveModuleSubsystem(DrivetrainConstants.driveMotor_LB, DrivetrainConstants.turnMotor_LB, DrivetrainConstants.canCoderID_LB, DrivetrainConstants.encoderOffset_LB);
+  SwerveModuleSubsystem leftBack = new SwerveModuleSubsystem(DrivetrainConstants.driveMotor_RF, DrivetrainConstants.turnMotor_RF, DrivetrainConstants.canCoderID_RF, DrivetrainConstants.encoderOffset_RF);
+  SwerveModuleSubsystem rightBack = new SwerveModuleSubsystem(DrivetrainConstants.driveMotor_RB, DrivetrainConstants.turnMotor_RB, DrivetrainConstants.canCoderID_RB, DrivetrainConstants.encoderOffset_RB);
   
   private final PigeonIMU gyro = new PigeonIMU(DrivetrainConstants.pigeonID);
   private final Translation2d leftFrontLocation = new Translation2d(.3, .3);
