@@ -51,26 +51,6 @@ public final class Constants {
         public static final int canCoderID_RF = 4;
         public static final int canCoderID_RB = 3;
 
-
-        //// TODO: REDO THIS
-        public static final int frontLeftDrive = 9;
-        public static final int frontLeftTurn = 8;
-        public static final int frontLeftEncoder = 2;
-
-        public static final int frontRightDrive = 10;
-        public static final int frontRightTurn = 13;
-        public static final int frontRightEncoder = 4;
-
-        public static final int backLeftDrive = 7;
-        public static final int backLeftTurn = 11;
-        public static final int backLeftEncoder = 5;
-
-        public static final int backRightDrive = 6;
-        public static final int backRightTurn = 12;
-        public static final int backRightEncoder = 3;
-
-
-
         public static final double encoderOffset_LF = 0;
         public static final double encoderOffset_RF = 0;
         public static final double encoderOffset_LB = 0;
@@ -78,8 +58,8 @@ public final class Constants {
 
 
 
-        public static final double maxSpeed = 1000000000;
-        public static final int pigeonID = 24; // TODO: Change the CAN ID on the Pigeon
+        public static final double maxSpeed = 0.8;
+        public static final int pigeonID = 1; // TODO: Change the CAN ID on the Pigeon
 
     }
 
