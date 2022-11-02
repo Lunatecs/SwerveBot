@@ -32,24 +32,44 @@ public final class Constants {
      }
 
     public static final class DrivetrainConstants {
-        public static final int driveMotor_LF = 0;
-        public static final int turnMotor_LF = 0;
+        public static final int driveMotor_LF = 9;
+        public static final int turnMotor_LF = 8;
 
-        public static final int driveMotor_RF = 0;
-        public static final int turnMotor_RF = 0;
+        public static final int driveMotor_RF = 10;
+        public static final int turnMotor_RF = 13;
 
-        public static final int driveMotor_LB = 0;
-        public static final int turnMotor_LB = 0;
+        public static final int driveMotor_LB = 7;
+        public static final int turnMotor_LB = 11;
 
-        public static final int driveMotor_RB = 0;
-        public static final int turnMotor_RB = 0;
+        public static final int driveMotor_RB = 6;
+        public static final int turnMotor_RB = 12;
 
         public static final double driveMaxOutput = 1.0;//Lower as needed
 
-        public static final int canCoderID_LF = 0;
-        public static final int canCoderID_LB = 0;
-        public static final int canCoderID_RF = 0;
-        public static final int canCoderID_RB = 0;
+        public static final int canCoderID_LF = 2;
+        public static final int canCoderID_LB = 5;
+        public static final int canCoderID_RF = 4;
+        public static final int canCoderID_RB = 3;
+
+
+        //// TODO: REDO THIS
+        public static final int frontLeftDrive = 9;
+        public static final int frontLeftTurn = 8;
+        public static final int frontLeftEncoder = 2;
+
+        public static final int frontRightDrive = 10;
+        public static final int frontRightTurn = 13;
+        public static final int frontRightEncoder = 4;
+
+        public static final int backLeftDrive = 7;
+        public static final int backLeftTurn = 11;
+        public static final int backLeftEncoder = 5;
+
+        public static final int backRightDrive = 6;
+        public static final int backRightTurn = 12;
+        public static final int backRightEncoder = 3;
+
+
 
         public static final double encoderOffset_LF = 0;
         public static final double encoderOffset_RF = 0;
