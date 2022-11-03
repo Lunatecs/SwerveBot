@@ -59,7 +59,7 @@ public final class Constants {
 
 
         public static final double maxSpeed = 0.8;
-        public static final int pigeonID = 1; // TODO: Change the CAN ID on the Pigeon
+        public static final int pigeonID = 1;
 
     }
 
