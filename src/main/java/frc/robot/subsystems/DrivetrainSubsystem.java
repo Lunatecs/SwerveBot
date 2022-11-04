@@ -15,13 +15,14 @@ import edu.wpi.first.math.kinematics.SwerveModuleState;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.DrivetrainConstants;
 import frc.robot.Constants.ModuleConstants;
+import frc.robot.SwerveModule;
 
 public class DrivetrainSubsystem extends SubsystemBase {
   /** Creates a new DrivetrainSubsystem. */
-  SwerveModuleSubsystem leftFront = new SwerveModuleSubsystem(DrivetrainConstants.driveMotor_LF, DrivetrainConstants.turnMotor_LF, DrivetrainConstants.canCoderID_LF, DrivetrainConstants.encoderOffset_LF);
-  SwerveModuleSubsystem rightFront = new SwerveModuleSubsystem(DrivetrainConstants.driveMotor_LB, DrivetrainConstants.turnMotor_LB, DrivetrainConstants.canCoderID_LB, DrivetrainConstants.encoderOffset_LB);
-  SwerveModuleSubsystem leftBack = new SwerveModuleSubsystem(DrivetrainConstants.driveMotor_RF, DrivetrainConstants.turnMotor_RF, DrivetrainConstants.canCoderID_RF, DrivetrainConstants.encoderOffset_RF);
-  SwerveModuleSubsystem rightBack = new SwerveModuleSubsystem(DrivetrainConstants.driveMotor_RB, DrivetrainConstants.turnMotor_RB, DrivetrainConstants.canCoderID_RB, DrivetrainConstants.encoderOffset_RB);
+  SwerveModule leftFront = new SwerveModule(DrivetrainConstants.driveMotor_LF, DrivetrainConstants.turnMotor_LF, DrivetrainConstants.canCoderID_LF, DrivetrainConstants.encoderOffset_LF);
+  SwerveModule rightFront = new SwerveModule(DrivetrainConstants.driveMotor_LB, DrivetrainConstants.turnMotor_LB, DrivetrainConstants.canCoderID_LB, DrivetrainConstants.encoderOffset_LB);
+  SwerveModule leftBack = new SwerveModule(DrivetrainConstants.driveMotor_RF, DrivetrainConstants.turnMotor_RF, DrivetrainConstants.canCoderID_RF, DrivetrainConstants.encoderOffset_RF);
+  SwerveModule rightBack = new SwerveModule(DrivetrainConstants.driveMotor_RB, DrivetrainConstants.turnMotor_RB, DrivetrainConstants.canCoderID_RB, DrivetrainConstants.encoderOffset_RB);
   
   private final PigeonIMU gyro = new PigeonIMU(DrivetrainConstants.pigeonID);
   private final Translation2d leftFrontLocation = new Translation2d(.3, .3);
@@ -41,7 +42,9 @@ public class DrivetrainSubsystem extends SubsystemBase {
   private boolean isXDefault = false;
 
 
-  public DrivetrainSubsystem() {}
+  public DrivetrainSubsystem() {
+    
+  }
 
   @Override
   public void periodic() {
@@ -197,5 +200,14 @@ public class DrivetrainSubsystem extends SubsystemBase {
     odometry.update(getAngle(), leftFront.getState(), rightFront.getState(), leftBack.getState(),
         rightBack.getState());
   }
+  public static double getCurve(double input) { // slopes up the value of speed in order to prevent jumpiness when driving
+    double sign = Math.signum(input);
+
+    double value = Math.abs(input);
+    value = Math.pow(value, 2);
+    value += 0.02;
+
+    return input; //TODO: edit the value for getCurve as necessary
+  } 
 }
 
