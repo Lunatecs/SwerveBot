@@ -53,7 +53,7 @@ public class DriveWithJoysticksCommand extends CommandBase {
         swerve.drive(0, 0, 0, true);
       }
     }else {
-      //swerve.CanDrive(true);
+      // swerve.CanDrive(true);
       swerve.drive(DrivetrainSubsystem.getCurve(forwardSpeed), DrivetrainSubsystem.getCurve(strafeSpeed), DrivetrainSubsystem.getCurve(Constants.ThrustMasterJoystick.Axis_Rot), true);
       //code requires asking about fieldrelativity. I set it so fieldrelative is hardcoded on
     }

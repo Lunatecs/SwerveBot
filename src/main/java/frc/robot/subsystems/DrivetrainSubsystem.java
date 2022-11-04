@@ -111,7 +111,9 @@ public class DrivetrainSubsystem extends SubsystemBase {
     var swerveModuleStates = kinematics
         .toSwerveModuleStates(fieldRelative ? ChassisSpeeds.fromFieldRelativeSpeeds(xSpeed, ySpeed, rot, getAngle())
             : new ChassisSpeeds(xSpeed, ySpeed, rot));
+
     SwerveDriveKinematics.desaturateWheelSpeeds(swerveModuleStates, maxSpeed);
+
     leftFront.setDesiredState(swerveModuleStates[0]);
     rightFront.setDesiredState(swerveModuleStates[1]);
     leftBack.setDesiredState(swerveModuleStates[2]);

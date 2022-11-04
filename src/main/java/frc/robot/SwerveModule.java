@@ -113,6 +113,10 @@ public class SwerveModule {
     }
     */ // TODO: Temporarily commented out
     // Set motor power to pid loop outputs
+
+    // System.out.print("SET Output");
+    // System.out.print(driveOutput);
+    // System.out.println(turnOutput);
     
     driveMotor.set(-driveOutput);
     turningMotor.set(turnOutput);
