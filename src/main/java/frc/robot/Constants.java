@@ -56,8 +56,7 @@ public final class Constants {
         public static final double encoderOffset_LB = 0;
         public static final double encoderOffset_RB = 0;
 
-
-
+        public static final double kMaxSpeed = 2;// meters per second
         public static final double maxSpeed = 0.8;
         public static final int pigeonID = 1;
 
@@ -85,5 +84,23 @@ public final class Constants {
 
         // Range for inputs that we will consider to be no input
         public static double NoInputTolerance = 0.25;
+    }
+    public static final class ThrustMasterJoystick{
+        //For the big joystick
+        public static final int Axis_X = 0;
+        public static final int Axis_Y = 1;
+        public static final int Axis_Rot = 2;
+        public static final int Axis_Throttle = 3;
+        public static final int Button_Trigger = 1;
+        public static final int Button_Thumb = 2;
+        public static final int Button_Thumb_Down = 2;
+        public static final int Button_Thumb_Left = 3;
+        public static final int Button_Thumb_Right = 4;
+        public static final int Button_Left_Left = 5;
+        public static final int Button_Left_Middle = 6;
+        public static final int Button_Left_Right = 7;
+        public static final int Button_Right_Right = 11;
+        public static final int Button_Right_Middle = 12;
+        public static final int Button_Right_Left = 13;
     }
 }
