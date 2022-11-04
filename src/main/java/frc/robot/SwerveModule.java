@@ -2,7 +2,7 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-package frc.robot.subsystems;
+package frc.robot;
 
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
@@ -16,7 +16,7 @@ import frc.robot.Constants;
 import frc.robot.Constants.DrivetrainConstants;
 import frc.robot.Constants.ModuleConstants;
 
-public class SwerveModuleSubsystem extends SubsystemBase {
+public class SwerveModule {
   // Motor value initialization
   private WPI_TalonFX driveMotor; //add final to these later
   private WPI_TalonFX turningMotor;
@@ -27,8 +27,9 @@ public class SwerveModuleSubsystem extends SubsystemBase {
 
   private final PIDController turningPID = new PIDController(ModuleConstants.turningPID_p, ModuleConstants.turningPID_i, ModuleConstants.turningPID_d);
   private final PIDController drivePidController = new PIDController(ModuleConstants.drivePID_p, ModuleConstants.drivePID_i, ModuleConstants.drivePID_d);
+  private boolean isXDefault = false;
 
-  public SwerveModuleSubsystem(int driveMotorID, int turningMotorID, int absoluteEncoderID, double absoluteEncoderOffset) {
+  public SwerveModule(int driveMotorID, int turningMotorID, int absoluteEncoderID, double absoluteEncoderOffset) {
 
     turnEncoder = new CANCoder(absoluteEncoderID);
     
@@ -62,6 +63,13 @@ public class SwerveModuleSubsystem extends SubsystemBase {
     return driveMotor.getSensorCollection().getIntegratedSensorPosition();
   }
 
+  public boolean isXDefault() {
+    return this.isXDefault;
+  }
+
+  public void setXDefault(boolean value) {
+    this.isXDefault = value;
+  }
   /**
    * Returns the current state of the module.
    *
@@ -110,8 +118,4 @@ public class SwerveModuleSubsystem extends SubsystemBase {
     turningMotor.set(turnOutput);
   }
 
-  @Override
-  public void periodic() {
-    // This method will be called once per scheduler run
-  }
 }
