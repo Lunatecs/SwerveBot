@@ -52,14 +52,12 @@ public class DrivetrainSubsystem extends SubsystemBase {
 
   }
 
-/*
-  public void CanDrive(boolean value){
-    leftFrontLocation.canDrive(value);
-    rightFrontLocation.canDrive(value);
-    leftBackLocation.canDrive(value);
-    rightBackLocation.canDrive(value);
-  }
-*/
+//  public void CanDrive(boolean value){
+//    leftFront.canDrive(value);
+//    rightFront.canDrive(value);
+//    leftBack.canDrive(value);
+//    rightBack.canDrive(value);
+//  }
 
   public Rotation2d getAngle() {
     return Rotation2d.fromDegrees((gyro.getFusedHeading())); //DO PIGEON SHIT !!!BAD WORD >:(!!!
