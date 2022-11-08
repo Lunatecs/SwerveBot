@@ -18,11 +18,11 @@ import frc.robot.Constants.ModuleConstants;
 
 public class SwerveModule {
   // Motor value initialization
-  private WPI_TalonFX driveMotor; //add final to these later
-  private WPI_TalonFX turningMotor;
+  private final WPI_TalonFX driveMotor; //add final to these later
+  private final WPI_TalonFX turningMotor;
   
   // Encoder Values initialization
-  private CANCoder turnEncoder;
+  private final CANCoder turnEncoder;
   private double absoluteEncoderOffset; // all the way down here as well
 
   private final PIDController turningPID = new PIDController(ModuleConstants.turningPID_p, ModuleConstants.turningPID_i, ModuleConstants.turningPID_d);
@@ -34,13 +34,12 @@ public class SwerveModule {
     turnEncoder = new CANCoder(absoluteEncoderID);
     
     driveMotor = new WPI_TalonFX(driveMotorID);
-    turningMotor = new WPI_TalonFX(turningMotorID);
-
     driveMotor.configFactoryDefault();
-    turningMotor.configFactoryDefault();
+    driveMotor.setNeutralMode(NeutralMode.Brake);
 
+    turningMotor = new WPI_TalonFX(turningMotorID);
+    turningMotor.configFactoryDefault();
     turningMotor.setNeutralMode(NeutralMode.Coast);
-    driveMotor.setNeutralMode(NeutralMode.Brake);  
     
     resetDriveEncoders();
 
@@ -87,7 +86,7 @@ public class SwerveModule {
    */
   public void setDesiredState(SwerveModuleState state) {
     // Calculate the drive output from the drive PID controller.
-    // Changing base encoder velocity to meters per socond
+    // Changing base encoder velocity to meters per second
     double driveEncoderVelocity = ((driveMotor.getSensorCollection().getIntegratedSensorVelocity())
         * ModuleConstants.driveEncoderMultiplier);
     double driveOutput = drivePidController.calculate(driveEncoderVelocity, state.speedMetersPerSecond);
@@ -105,19 +104,19 @@ public class SwerveModule {
         * Constants.ModuleConstants.turnEncoderMulitplier) - Math.PI;
     double turnOutput = turningPID.calculate(turnEncoderPosition, state.angle.getRadians());
 
-   /* // Clamps the turn output to prevent damage to gears
-    if (turnOutput > Constants.DrivetrainConstants.turnMaxOutput) {
-      turnOutput = Constants.DrivetrainConstants.turnMaxOutput;
-    } else if (turnOutput < -Constants.DrivetrainConstants.turnMaxOutput) {
-      turnOutput = -Constants.DrivetrainConstants.turnMaxOutput;
-    }
-    */ // TODO: Temporarily commented out
-    // Set motor power to pid loop outputs
+//    // Clamps the turn output to prevent damage to gears
+//    if (turnOutput > Constants.DrivetrainConstants.turnMaxOutput) {
+//      turnOutput = Constants.DrivetrainConstants.turnMaxOutput;
+//    } else if (turnOutput < -Constants.DrivetrainConstants.turnMaxOutput) {
+//      turnOutput = -Constants.DrivetrainConstants.turnMaxOutput;
+//    }
 
+    // TODO: Temporarily commented out
     // System.out.print("SET Output");
     // System.out.print(driveOutput);
     // System.out.println(turnOutput);
-    
+
+    // Set motor power to pid loop outputs
     driveMotor.set(-driveOutput);
     turningMotor.set(turnOutput);
   }
