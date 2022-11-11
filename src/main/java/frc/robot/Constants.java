@@ -20,10 +20,10 @@ public final class Constants {
         public static final double circumference = Math.PI * wheelDiameter;
         public static final double conversionInches = circumference/2048;
 
-        public static final double turningPID_p = 0.0;
+        public static final double turningPID_p = 0.25;
         public static final double turningPID_i = 0.0;
         public static final double turningPID_d = 0.0;
-        public static final double drivePID_p = 0.0;
+        public static final double drivePID_p = 0.5;
         public static final double drivePID_i = 0.0;
         public static final double drivePID_d = 0.0;
 
@@ -51,12 +51,13 @@ public final class Constants {
         public static final int canCoderID_RF = 4;
         public static final int canCoderID_RB = 3;
 
-        public static final double encoderOffset_LF = 0;
-        public static final double encoderOffset_RF = 0;
-        public static final double encoderOffset_LB = 0;
-        public static final double encoderOffset_RB = 0;
+        public static final double encoderOffset_LF = 220.4;
+        public static final double encoderOffset_RF = 231.9;
+        public static final double encoderOffset_LB = 206.1;
+        public static final double encoderOffset_RB = 108.9;
 
         public static final double kMaxSpeed = 2;// meters per second
+        public static final double kMaxAngularSpeed = Math.PI * 0.75;// 1/2 rotation per second
         public static final double maxSpeed = 0.8;
         public static final int pigeonID = 1;
 

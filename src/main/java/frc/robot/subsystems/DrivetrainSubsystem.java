@@ -16,19 +16,20 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.DrivetrainConstants;
 import frc.robot.Constants.ModuleConstants;
 import frc.robot.SwerveModule;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class DrivetrainSubsystem extends SubsystemBase {
   /** Creates a new DrivetrainSubsystem. */
   SwerveModule leftFront = new SwerveModule(DrivetrainConstants.driveMotor_LF, DrivetrainConstants.turnMotor_LF, DrivetrainConstants.canCoderID_LF, DrivetrainConstants.encoderOffset_LF);
-  SwerveModule rightFront = new SwerveModule(DrivetrainConstants.driveMotor_LB, DrivetrainConstants.turnMotor_LB, DrivetrainConstants.canCoderID_LB, DrivetrainConstants.encoderOffset_LB);
-  SwerveModule leftBack = new SwerveModule(DrivetrainConstants.driveMotor_RF, DrivetrainConstants.turnMotor_RF, DrivetrainConstants.canCoderID_RF, DrivetrainConstants.encoderOffset_RF);
+  SwerveModule rightFront = new SwerveModule(DrivetrainConstants.driveMotor_RF, DrivetrainConstants.turnMotor_RF, DrivetrainConstants.canCoderID_RF, DrivetrainConstants.encoderOffset_RF);
+  SwerveModule leftBack = new SwerveModule(DrivetrainConstants.driveMotor_LB, DrivetrainConstants.turnMotor_LB, DrivetrainConstants.canCoderID_LB, DrivetrainConstants.encoderOffset_LB);
   SwerveModule rightBack = new SwerveModule(DrivetrainConstants.driveMotor_RB, DrivetrainConstants.turnMotor_RB, DrivetrainConstants.canCoderID_RB, DrivetrainConstants.encoderOffset_RB);
   
   private final PigeonIMU gyro = new PigeonIMU(DrivetrainConstants.pigeonID);
   private final Translation2d leftFrontLocation = new Translation2d(.3, .3);
   private final Translation2d rightFrontLocation = new Translation2d(.3, -.3);
-  private final Translation2d rightBackLocation = new Translation2d(-.3, .3);
-  private final Translation2d leftBackLocation = new Translation2d(-.3, -.3);
+  private final Translation2d rightBackLocation = new Translation2d(-.3, -.3);
+  private final Translation2d leftBackLocation = new Translation2d(-.3, .3);
 
   private double maxSpeed = DrivetrainConstants.maxSpeed;
 
@@ -49,7 +50,11 @@ public class DrivetrainSubsystem extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
-
+    
+    SmartDashboard.putNumber("Swerve leftFront", leftFront.getAbsolutePosition());
+    SmartDashboard.putNumber("Swerve rightFront", rightFront.getAbsolutePosition());
+    SmartDashboard.putNumber("Swerve leftBack", leftBack.getAbsolutePosition());
+    SmartDashboard.putNumber("Swerve rightBack", rightBack.getAbsolutePosition());
   }
 
 //  public void CanDrive(boolean value){

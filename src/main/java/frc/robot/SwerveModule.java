@@ -15,6 +15,8 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 import frc.robot.Constants.DrivetrainConstants;
 import frc.robot.Constants.ModuleConstants;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.math.MathUtil;
 
 public class SwerveModule {
   // Motor value initialization
@@ -62,6 +64,10 @@ public class SwerveModule {
     return driveMotor.getSensorCollection().getIntegratedSensorPosition();
   }
 
+  public double getAbsolutePosition() {
+    return turnEncoder.getAbsolutePosition();
+  }
+
   public boolean isXDefault() {
     return this.isXDefault;
   }
@@ -98,11 +104,16 @@ public class SwerveModule {
       driveOutput = -Constants.DrivetrainConstants.driveMaxOutput;
     }
 
+    //System.out.println(state.speedMetersPerSecond);
+
     // Calculate the turning motor output from the turning PID controller.
     // Changing encoder value to radians between -pi to pi
     double turnEncoderPosition = (turnEncoder.getAbsolutePosition()
         * Constants.ModuleConstants.turnEncoderMulitplier) - Math.PI;
     double turnOutput = turningPID.calculate(turnEncoderPosition, state.angle.getRadians());
+
+    SmartDashboard.putNumber("Desired Position", state.angle.getRadians());
+    SmartDashboard.putNumber("Current Position", turnEncoderPosition);
 
 //    // Clamps the turn output to prevent damage to gears
 //    if (turnOutput > Constants.DrivetrainConstants.turnMaxOutput) {
@@ -112,13 +123,15 @@ public class SwerveModule {
 //    }
 
     // TODO: Temporarily commented out
-    // System.out.print("SET Output");
-    // System.out.print(driveOutput);
-    // System.out.println(turnOutput);
+    //System.out.print("SET Output");
+    //System.out.print(driveOutput);
+    //System.out.println(turnOutput);
+
+    driveOutput = MathUtil.clamp(driveOutput, -0.5, 0.5);
 
     // Set motor power to pid loop outputs
     driveMotor.set(-driveOutput);
-    turningMotor.set(turnOutput);
+    turningMotor.set(-turnOutput);
   }
 
 }
